@@ -212,14 +212,14 @@ const App: React.FC = () => {
                             <span className="flex-shrink-0 w-6 h-6 bg-rose-500/20 border border-rose-500/30 rounded-full flex items-center justify-center text-[10px] font-black text-rose-400">!</span>
                             <div>
                                <p className="text-sm font-bold text-slate-200">Trigger New Deployment</p>
-                               <p className="text-xs text-slate-400">After adding <code className="text-indigo-300">API_KEY</code>, you must go to Vercel and click <strong>"Deployments" > "Redeploy"</strong> or push a new commit. A static site doesn't see new variables until it rebuilds.</p>
+                               <p className="text-xs text-slate-400">After adding <code className="text-indigo-300">API_KEY</code>, you must go to Vercel and click <strong>&quot;Deployments&quot; &gt; &quot;Redeploy&quot;</strong> or push a new commit. A static site doesn't see new variables until it rebuilds.</p>
                             </div>
                          </li>
                          <li className="flex gap-4">
                             <span className="flex-shrink-0 w-6 h-6 bg-indigo-500/20 border border-indigo-500/30 rounded-full flex items-center justify-center text-[10px] font-black text-indigo-400">?</span>
                             <div>
                                <p className="text-sm font-bold text-slate-200">Environment Toggle</p>
-                               <p className="text-xs text-slate-400">Ensure the variable is checked for <strong>"Production"</strong>, <strong>"Preview"</strong>, and <strong>"Development"</strong> in Vercel settings.</p>
+                               <p className="text-xs text-slate-400">Ensure the variable is checked for <strong>&quot;Production&quot;</strong>, <strong>&quot;Preview&quot;</strong>, and <strong>&quot;Development&quot;</strong> in Vercel settings.</p>
                             </div>
                          </li>
                        </ul>
@@ -232,11 +232,11 @@ const App: React.FC = () => {
                        <div className="bg-white/5 p-4 rounded-xl border border-white/10 space-y-4">
                           <div>
                             <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Naming Requirement</p>
-                            <p className="text-xs text-slate-300">The "Key" field in Vercel must be exactly <span className="text-indigo-400 font-black uppercase">API_KEY</span>. If you named it "GEMINI_KEY" or "Grok", the code won't find it.</p>
+                            <p className="text-xs text-slate-300">The &quot;Key&quot; field in Vercel must be exactly <span className="text-indigo-400 font-black uppercase">API_KEY</span>. If you named it &quot;GEMINI_KEY&quot;, the code won't find it.</p>
                           </div>
                           <div>
                             <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Value Format</p>
-                            <p className="text-xs text-slate-300">The "Value" should be the long string starting with <span className="text-indigo-400 font-black uppercase">AIza...</span> obtained from Google AI Studio.</p>
+                            <p className="text-xs text-slate-300">The &quot;Value&quot; should be the long string starting with <span className="text-indigo-400 font-black uppercase">AIza...</span> obtained from Google AI Studio.</p>
                           </div>
                        </div>
                     </div>
@@ -263,8 +263,8 @@ const App: React.FC = () => {
                    The application found your <code className="text-amber-300">API_KEY</code>, but Google's servers rejected it.
                  </p>
                  <ul className="text-xs text-slate-400 space-y-2 list-disc pl-5">
-                    <li>Confirm the key is copied correctly from <a href="https://aistudio.google.com/" className="text-amber-400 underline">AI Studio</a>.</li>
-                    <li>Ensure you are using a <strong>Gemini</strong> API key (not an OpenAI, Grok, or Google Cloud general key).</li>
+                    <li>Confirm the key is copied correctly from <a href="https://aistudio.google.com/" className="text-amber-400 underline" target="_blank" rel="noreferrer">AI Studio</a>.</li>
+                    <li>Ensure you are using a <strong>Gemini</strong> API key (not an OpenAI or other service).</li>
                     <li>Check if your Google account has remaining quota or if billing is required for your project.</li>
                  </ul>
               </div>

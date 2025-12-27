@@ -3,20 +3,6 @@ import { GoogleGenAI } from "@google/genai";
 import { SpecAttribute, Product, AttributeType, PriceRange, RetailerLink, AdUnit, UserLocation } from "../types";
 
 /**
- * Safely retrieves the API key from the environment.
- * Adheres to the requirement of using process.env.API_KEY exclusively.
- */
-const safeGetApiKey = (): string | undefined => {
-  try {
-    return process.env.API_KEY;
-  } catch (e) {
-    // In some browser environments, 'process' is not defined.
-    // We attempt to access it through window if available, or return undefined.
-    return (window as any).process?.env?.API_KEY;
-  }
-};
-
-/**
  * Robust JSON cleaner that handles markdown blocks, trailing commas, 
  * and model chatter before/after the JSON block.
  */
@@ -97,12 +83,11 @@ const generateRetailerLinks = (product: Partial<Product>, region: RegionInfo, af
 };
 
 export const analyzeProductCategory = async (query: string): Promise<{ attributes: SpecAttribute[], suggestions: string[], marketGuide: string, defaultValues: Record<string, any>, priceRange: PriceRange, adUnits: AdUnit[], region: RegionInfo }> => {
-  const apiKey = safeGetApiKey();
-  if (!apiKey) {
+  if (!process.env.API_KEY) {
     throw new Error("ENVIRONMENT_AUTH_FAILURE: API_KEY variable not found in current execution context.");
   }
   
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const region = getRegionInfo();
   
   try {
@@ -133,12 +118,11 @@ export const analyzeProductCategory = async (query: string): Promise<{ attribute
 };
 
 export const searchProducts = async (query: string, userValues: Record<string, any>, location?: UserLocation, affiliates?: any): Promise<{ products: Product[], summary: string, sources: { title: string, uri: string }[], region: RegionInfo }> => {
-  const apiKey = safeGetApiKey();
-  if (!apiKey) {
+  if (!process.env.API_KEY) {
     throw new Error("ENVIRONMENT_AUTH_FAILURE: API_KEY variable not found in current execution context.");
   }
 
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const region = getRegionInfo();
   
   const prompt = `Mission: Identify the top 4 specific product options for: "${query}" in ${region.countryName}. 
